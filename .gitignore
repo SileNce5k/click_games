@@ -1,0 +1,4 @@
+*.exe*
+nob
+nob.old
+build/
