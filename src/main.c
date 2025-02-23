@@ -196,6 +196,9 @@ int main(void)
                 // ToggleFullscreen(); TODO: Fix fullscreen toggle
                 
         }
+        if(IsKeyPressed(KEY_R)){
+            reset_game_state(&game_state);
+        }
         BeginDrawing();
             ClearBackground(BLACK);
             switch (screen_state)
