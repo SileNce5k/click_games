@@ -27,11 +27,12 @@ void reset_game_state(Game_State *game_state){
 
 
 void draw_back_button(Resolution *resolution, Font *font, Screen_State *state){
-    const int height = 35;
-    DrawRectangle(resolution->width - 120, 0, 120, height, BLACK);
     const char *formatted_text = TextFormat("Main Menu");
-
-    DrawTextEx(*font, formatted_text, (Vector2){resolution->width - 110 ,0}, 24.0f, 0, WHITE);
+    Vector2 formatted_text_size = MeasureTextEx(*font, formatted_text, 24.0f, 0.0f);
+    
+    const int height = formatted_text_size.y + formatted_text_size.y / 3;
+    DrawRectangle(resolution->width - formatted_text_size.x - 20, 0, 120, height, BLACK);
+    DrawTextEx(*font, formatted_text, (Vector2){resolution->width - formatted_text_size.x - 10 ,0}, 24.0f, 0, WHITE);
     Vector2 mouse_position = GetMousePosition();
     if(
         mouse_position.x > resolution->width - 120 &&
